@@ -149,13 +149,19 @@
     }
   }
 
-  /* Archive text styles */
+  /* Archive text styles - Engraved and debossed */
   .archive-title {
     font-family: var(--font-heading);
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: hsl(var(--ash));
+    color: #8c8c8c;
+    text-shadow: 
+      0 1px 0 rgba(0, 0, 0, 0.8),
+      0 -1px 0 rgba(0, 0, 0, 0.3),
+      1px 0 0 rgba(0, 0, 0, 0.6),
+      -1px 0 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(0, 0, 0, 0.9);
   }
 
   .archive-subtitle {
@@ -163,7 +169,11 @@
     font-size: clamp(0.75rem, 1.5vw, 0.875rem);
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: hsl(var(--muted-foreground));
+    color: #7a7a7a;
+    text-shadow: 
+      0 1px 0 rgba(0, 0, 0, 0.7),
+      0 -1px 0 rgba(0, 0, 0, 0.2),
+      inset 0 1px 1px rgba(0, 0, 0, 0.8);
   }
 
   .archive-quote {
@@ -171,28 +181,53 @@
     font-style: italic;
     font-size: clamp(1.125rem, 2.5vw, 1.5rem);
     line-height: 2;
-    color: hsl(var(--ash));
+    color: #9a9a9a;
     max-width: 36ch;
+    text-shadow: 
+      0 1px 0 rgba(0, 0, 0, 0.6),
+      inset 0 1px 2px rgba(0, 0, 0, 0.7);
   }
 
   .archive-prose {
     font-family: var(--font-body);
     font-size: 1.125rem;
     line-height: 2.2;
-    color: hsl(var(--foreground));
+    color: #8c8c8c;
     max-width: 50ch;
+    text-shadow: 
+      0 1px 0 rgba(0, 0, 0, 0.5),
+      inset 0 1px 1px rgba(0, 0, 0, 0.6);
   }
 
-  /* Dividers */
+  /* Dividers - Etched and architectural */
   .archive-divider {
     width: 80px;
     height: 1px;
     background: linear-gradient(
       90deg,
       transparent,
-      hsl(var(--border)),
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.08),
       transparent
     );
+    position: relative;
+  }
+
+  .archive-divider::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.4),
+      transparent
+    );
+    transform: translateY(1px);
   }
 
   .archive-divider-vertical {
@@ -201,48 +236,352 @@
     background: linear-gradient(
       180deg,
       transparent,
-      hsl(var(--border)),
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.08),
       transparent
     );
+    position: relative;
   }
 
-  /* Navigation links */
+  .archive-divider-vertical::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.4),
+      transparent
+    );
+    transform: translateX(1px);
+  }
+
+  /* Ornamental architectural borders */
+  .archive-border-etched {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    background: 
+      linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, transparent 50%, rgba(0, 0, 0, 0.15) 100%),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0%, transparent 50%, rgba(255, 255, 255, 0.01) 100%);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+      inset 1px 0 0 rgba(255, 255, 255, 0.03),
+      inset -1px 0 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .archive-border-etched::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .archive-border-etched::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Heavy architectural frame */
+  .archive-frame-heavy {
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    background: 
+      linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, transparent 50%, rgba(0, 0, 0, 0.2) 100%),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.015) 0%, transparent 50%, rgba(255, 255, 255, 0.008) 100%);
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.6),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.8),
+      inset 2px 0 4px rgba(0, 0, 0, 0.5),
+      inset -2px 0 4px rgba(0, 0, 0, 0.7),
+      0 1px 0 rgba(255, 255, 255, 0.02);
+  }
+
+  .archive-frame-heavy::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .archive-frame-heavy::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Carved stone border */
+  .archive-border-carved {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    background: 
+      linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, transparent 50%, rgba(0, 0, 0, 0.25) 100%);
+    box-shadow: 
+      inset 0 1px 2px rgba(0, 0, 0, 0.8),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.9),
+      inset 1px 0 2px rgba(0, 0, 0, 0.7),
+      inset -1px 0 2px rgba(0, 0, 0, 0.8),
+      inset 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .archive-border-carved::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.02) 50%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Hairline section separators */
+  .archive-separator {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.06) 10%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(255, 255, 255, 0.06) 90%,
+      transparent 100%
+    );
+    margin: 3rem 0;
+    position: relative;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .archive-separator::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.4) 10%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.4) 90%,
+      transparent 100%
+    );
+    transform: translateY(1px);
+  }
+
+  /* Double line separator */
+  .archive-separator-double {
+    height: 3px;
+    background: 
+      linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.04) 20%, rgba(255, 255, 255, 0.04) 80%, transparent 100%),
+      linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.04) 20%, rgba(255, 255, 255, 0.04) 80%, transparent 100%);
+    background-size: 100% 1px;
+    background-position: top, bottom;
+    background-repeat: no-repeat;
+    margin: 3rem 0;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 
+      0 1px 0 rgba(0, 0, 0, 0.4),
+      0 -1px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  /* Ornamental rule with center detail */
+  .archive-rule-ornamental {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.08) 35%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.08) 65%,
+      transparent 100%
+    );
+    margin: 2rem 0;
+    position: relative;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .archive-rule-ornamental::before {
+    content: '❦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.12);
+    font-size: 0.75rem;
+    background: hsl(var(--background));
+    padding: 0 0.5rem;
+  }
+
+  /* Navigation links - Engraved effect */
   .archive-nav {
     font-family: var(--font-heading);
     font-size: 0.75rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: hsl(var(--muted-foreground));
+    color: #6a6a6a;
     text-decoration: none;
     padding: 1rem 2rem;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.04);
     transition: all var(--duration-transition) var(--ease-ceremonial);
     position: relative;
+    text-shadow: 
+      0 1px 0 rgba(0, 0, 0, 0.7),
+      inset 0 1px 1px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
   }
 
   .archive-nav::before {
     content: '';
     position: absolute;
-    inset: 0;
-    border: 1px solid hsl(var(--border) / 0);
+    inset: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     transition: border-color var(--duration-transition) var(--ease-ceremonial);
+    pointer-events: none;
+  }
+
+  .archive-nav::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.06),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity var(--duration-transition) var(--ease-ceremonial);
   }
 
   .archive-nav:hover {
-    color: hsl(var(--ash));
+    color: #8a8a8a;
+    border-color: rgba(255, 255, 255, 0.08);
   }
 
   .archive-nav:hover::before {
-    border-color: hsl(var(--border));
+    border-color: rgba(0, 0, 0, 0.3);
   }
 
-  /* Entry markers */
+  .archive-nav:hover::after {
+    opacity: 1;
+  }
+
+  /* Entry markers - Engraved appearance */
   .archive-entry-marker {
     font-family: var(--font-heading);
     font-size: 0.625rem;
     letter-spacing: 0.5em;
     text-transform: uppercase;
-    color: hsl(var(--muted-foreground) / 0.5);
+    color: #5a5a5a;
+    text-shadow: 
+      0 1px 0 rgba(0, 0, 0, 0.6),
+      inset 0 1px 1px rgba(0, 0, 0, 0.7);
+    position: relative;
+  }
+
+  .archive-entry-marker::before,
+  .archive-entry-marker::after {
+    content: '•';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.08);
+    font-size: 0.4rem;
+    letter-spacing: 0;
+  }
+
+  .archive-entry-marker::before {
+    left: -1.5rem;
+  }
+
+  .archive-entry-marker::after {
+    right: -1.5rem;
+  }
+
+  /* Textured surface overlays */
+  .archive-surface {
+    position: relative;
+    background: 
+      linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.01) 0%, transparent 50%, rgba(255, 255, 255, 0.005) 100%);
+  }
+
+  .archive-surface::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.005) 2px,
+        rgba(255, 255, 255, 0.005) 4px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.003) 2px,
+        rgba(255, 255, 255, 0.003) 4px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Ornamental corner decorations */
+  .archive-corner-ornament {
+    position: relative;
+  }
+
+  .archive-corner-ornament::before,
+  .archive-corner-ornament::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .archive-corner-ornament::before {
+    top: -10px;
+    left: -10px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .archive-corner-ornament::after {
+    bottom: -10px;
+    right: -10px;
+    border-left: none;
+    border-top: none;
   }
 }
 
