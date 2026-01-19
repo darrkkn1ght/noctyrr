@@ -5,11 +5,11 @@ import archiveCrest from "@/assets/archive-crest.png";
 const Index = () => {
   return (
     <ArchiveLayout>
-      <div className="archive-page">
-        <div className="flex flex-col items-center text-center space-y-8 md:space-y-12 px-4">
+      <div className="archive-page archive-surface archive-border-carved">
+        <div className="flex flex-col items-center text-center space-y-8 md:space-y-12 px-4 archive-corner-ornament">
           {/* Crest */}
           <div 
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 opacity-0 animate-fade-slow"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 opacity-0 animate-fade-slow archive-frame-heavy p-4"
             style={{ animationDelay: '400ms', animationDuration: '2500ms' }}
           >
             <img 
@@ -21,7 +21,7 @@ const Index = () => {
 
           {/* Main title */}
           <h1 
-            className="opacity-0 animate-fade-slow font-heading text-2xl sm:text-3xl md:text-5xl tracking-[0.3em] md:tracking-[0.4em] text-ash"
+            className="opacity-0 animate-fade-slow archive-title"
             style={{ animationDelay: '1500ms', animationDuration: '2200ms' }}
           >
             NOCTYRR
@@ -43,11 +43,15 @@ const Index = () => {
 
           {/* Warning quote */}
           <blockquote 
-            className="archive-quote text-sm sm:text-base md:text-lg opacity-0 animate-fade-slow max-w-sm"
+            className="archive-quote text-sm sm:text-base md:text-lg opacity-0 animate-fade-slow max-w-sm archive-border-etched p-6"
             style={{ animationDelay: '5000ms', animationDuration: '2000ms' }}
           >
             "You were not meant to read this."
           </blockquote>
+
+          {/* Ornamental separator */}
+          <div className="archive-rule-ornamental opacity-0 animate-fade-slow" 
+               style={{ animationDelay: '5500ms', animationDuration: '1800ms' }} />
 
           {/* Enter link */}
           <ArchiveLink 
@@ -57,6 +61,10 @@ const Index = () => {
           >
             Enter the Archive →
           </ArchiveLink>
+
+          {/* Double separator */}
+          <div className="archive-separator-double opacity-0 animate-fade-slow" 
+               style={{ animationDelay: '7500ms', animationDuration: '1800ms' }} />
 
           {/* Entry marker */}
           <span 
